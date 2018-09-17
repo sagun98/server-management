@@ -1,3 +1,15 @@
-<p>
-  users works!
-</p>
+<hr>
+
+<div class="row">
+  <div class="col-xs-3">
+    <div class="list-group" *ngFor="let user of users">
+
+      <button type="button" [routerLink]="['/users', user.id, user.name]" class="list-group-item list-group-item-action">{{user.name}}</button>
+    </div>
+  </div>
+
+  <div class="col-xs-6" style="margin:1em;">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>
