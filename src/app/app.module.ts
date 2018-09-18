@@ -8,11 +8,19 @@ import { ServersComponent } from './servers/servers.component';
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './users/user/user.component';
 import { EditServersComponent } from './servers/edit-servers/edit-servers.component';
+import { ServerComponent } from './servers/server/server.component';
 
 const appRoutes = [
   { path: '', component: HomeComponent },
-  { path: 'servers', component: ServersComponent },
-  { path: 'servers/:id/edit', component: EditServersComponent },
+  {
+    path: 'servers',
+    component: ServersComponent,
+    children: [
+      { path: ':id/edit', component: ServerComponent },
+      { path: ':id/edit', component: EditServersComponent }
+    ]
+  },
+
   {
     path: 'users',
     component: UsersComponent,
@@ -28,7 +36,8 @@ const appRoutes = [
     ServersComponent,
     HomeComponent,
     UserComponent,
-    EditServersComponent
+    EditServersComponent,
+    ServerComponent
   ],
   imports: [BrowserModule, RouterModule.forRoot(appRoutes)],
   providers: [],
