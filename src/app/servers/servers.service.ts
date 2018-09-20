@@ -1,11 +1,8 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Servers } from './servers.model';
 
-@Injectable()
 export class ServersService {
   constructor() {}
-
-  statusChanged = new EventEmitter<Servers[]>();
 
   private servers: Servers[] = [
     new Servers(1, 'Artemis', 'Online'),
@@ -13,8 +10,10 @@ export class ServersService {
   ];
 
   getServers() {
-    return this.servers;
+    console.log(this.servers);
+    return this.servers.slice();
   }
+
   getServer(id: number) {
     const server = this.servers.find(s => {
       return s.id === id;

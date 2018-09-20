@@ -6,12 +6,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-servers',
   templateUrl: './servers.component.html',
-  styleUrls: ['./servers.component.css']
+  styleUrls: ['./servers.component.css'],
+  providers: [ServersService]
 })
 export class ServersComponent implements OnInit {
-  server: Servers[];
+  servers: Servers[];
   serverName: '';
   serverStatus = '';
+  
   constructor(
     private serversService: ServersService,
     private router: Router,
@@ -19,6 +21,6 @@ export class ServersComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.server = this.serversService.getServers();
+    this.servers = this.serversService.getServers();
   }
 }
