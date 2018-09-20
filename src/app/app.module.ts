@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { UserComponent } from './users/user/user.component';
 import { EditServersComponent } from './servers/edit-servers/edit-servers.component';
 import { ServerComponent } from './servers/server/server.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const appRoutes = [
   { path: '', component: HomeComponent },
@@ -30,7 +31,9 @@ const appRoutes = [
         component: UserComponent
       }
     ]
-  }
+  },
+  { path: 'not-found', component: NotFoundComponent },
+  { path: '**', redirectTo: '/not-found' }
 ];
 
 @NgModule({
@@ -41,7 +44,8 @@ const appRoutes = [
     HomeComponent,
     UserComponent,
     EditServersComponent,
-    ServerComponent
+    ServerComponent,
+    NotFoundComponent
   ],
   imports: [BrowserModule, RouterModule.forRoot(appRoutes)],
   providers: [],
